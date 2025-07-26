@@ -8,19 +8,24 @@ editor: visual
 
 ## 🧠 Overview
 
-This project analyzes the performance of **S&P 500 sectors** using sector **ETFs** (like XLK for tech, XLE for energy, etc.) from **2015 to July 2025**.  
+This project analyzes the performance of **S&P 500 sectors** using sector **ETFs** (like XLK for tech, XLE for energy, etc.) from **2015 to July 2025**.\
 📥 Data is pulled from Yahoo Finance using R packages `quantmod` and `PerformanceAnalytics`.
 
 ### 🔍 We’ll explore:
-- 📈 Monthly returns  
-- 📉 Cumulative performance  
-- 🔁 Rolling volatility  
+
+-   📈 Monthly returns\
+-   📉 Cumulative performance\
+-   🔁 Rolling volatility
 
 ### 🧰 Tools Used:
-- 🧮 `quantmod`: To download stock data  
-- 📉 `PerformanceAnalytics`: For return metrics & charts  
-- 🧹 `tidyverse`: For data wrangling and visualization
----
+
+-   🧮 `quantmod`: To download stock data\
+
+-   📉 `PerformanceAnalytics`: For return metrics & charts\
+
+-   
+
+    ## 🧹 `tidyverse`: For data wrangling and visualization
 
 ```{r}
 library(quantmod)
@@ -60,11 +65,11 @@ suppressWarnings(
  
 ```
 
->  **Interpretation:**
+> **Interpretation:**
 >
-> -    📈 **Cumulative Return:** Shows how each sector grew over time.
+> -   📈 **Cumulative Return:** Shows how each sector grew over time.
 >
-> -    📉 **Monthly Return:** Highlights monthly fluctuations (volatility)
+> -   📉 **Monthly Return:** Highlights monthly fluctuations (volatility)
 >
 > -   🔻 **Drawdown:** Shows the largest drops from peaks — useful to evaluate risk.
 
@@ -111,21 +116,23 @@ round(summary_stats, 4)
 
 <!-- -->
 
--    ⚖️ **Stdev** = volatility (risk)
+-   ⚖️ **Stdev** = volatility (risk)
 
 <!-- -->
 
--    🚨 **Minimum** = worst monthly performance
+-   🚨 **Minimum** = worst monthly performance
 
--    🏆 **Maximum** = best monthly performance
+-   🏆 **Maximum** = best monthly performance
 
-    🧠 Insights
+```         
+🧠 Insights
 
-    -    💡 Technology (XLK) and Consumer Discretionary (XLY) had the **highest average returns**.
+-    💡 Technology (XLK) and Consumer Discretionary (XLY) had the **highest average returns**.
 
-    -    ⚡ Energy (XLE) showed **higher volatility** and **largest drawdowns**.
+-    ⚡ Energy (XLE) showed **higher volatility** and **largest drawdowns**.
 
-    -    🛡️ Staples (XLP) and Health Care (XLV) provided **more stability** in downturns.
+-    🛡️ Staples (XLP) and Health Care (XLV) provided **more stability** in downturns.
+```
 
 ```{r}
 suppressWarnings(
@@ -136,6 +143,13 @@ suppressWarnings(
 ) 
 ```
 
-## 🧾 Conclusion
+Conclusion
 
 This project demonstrates how financial data from Yahoo Finance can be used with R to evaluate investment performance across sectors. The combination of cumulative return charts and return statistics helps understand **growth potential** and **risk exposure** across the S&P 500 sectors.
+
+```{r}
+# Save chart to file
+png("figures/monthly_returns_chart.png", width = 800, height = 600)
+charts.PerformanceSummary(monthly_returns, main = "S&P 500 Sector Monthly Returns (2015–2025)")
+dev.off()
+```
