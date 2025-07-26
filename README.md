@@ -63,3 +63,9 @@ To run this analysis on your own:
 ## 🔗 View the Report
 
 <https://alexxx2339.github.io/stock-sector-analysis/>
+
+### 🧠 Insights Summary
+
+This report analyzes 11 sector ETFs from 2018 to 2025. Technology
+outperformed others, while Energy saw higher risk. The COVID-19 dip is
+visible across all sectors, with varying recovery speeds.
