@@ -62,5 +62,4 @@ To run this analysis on your own:
 
 ## 🔗 View the Report
 
-[Click here to view the live report on GitHub
-Pages](https://alexoc2339.github.io/stock-sector-analysis/)
+<https://alexxx2339.github.io/stock-sector-analysis/>
