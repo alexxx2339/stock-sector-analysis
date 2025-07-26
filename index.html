@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>title: “📊 S&amp;P 500 Sector Performance” author: “Alex Alvarez” format: html editor: visual</p>
+<p>title: “📊 S&amp;P 500 Sector Performance” author: “Alex Alvarez” format: html output-file: index.html editor: visual</p>
 <hr>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">🧠 Overview</h2>
@@ -120,15 +120,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="tools-used" class="level3">
-<h3 class="anchored" data-anchor-id="tools-used">🧰 Tools Used:</h3>
+<h3 class="anchored">🧰 Tools Used:</h3>
 <ul>
-<li>🧮 <code>quantmod</code>: To download stock data<br>
-</li>
-<li>📉 <code>PerformanceAnalytics</code>: For return metrics &amp; charts<br>
-</li>
-<li>🧹 <code>tidyverse</code>: For data wrangling and visualization</li>
+<li><p>🧮 <code>quantmod</code>: To download stock data<br>
+</p></li>
+<li><p>📉 <code>PerformanceAnalytics</code>: For return metrics &amp; charts<br>
+</p></li>
+<li><h2 id="tidyverse-for-data-wrangling-and-visualization" class="anchored" data-anchor-id="tools-used">🧹 <code>tidyverse</code>: For data wrangling and visualization</h2></li>
 </ul>
-<hr>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -249,34 +248,34 @@ NAs              0.0000  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
 Minimum         -0.1218 -0.3581 -0.2170 -0.0976 -0.1532 -0.1188 -0.1925 -0.1457
 Quartile 1      -0.0156 -0.0348 -0.0266 -0.0285 -0.0229 -0.0191 -0.0259 -0.0330
 Median           0.0270  0.0133  0.0236  0.0140  0.0128  0.0129  0.0111  0.0162
-Arithmetic Mean  0.0176  0.0064  0.0101  0.0067  0.0106  0.0068  0.0109  0.0071
-Geometric Mean   0.0157  0.0017  0.0082  0.0057  0.0084  0.0057  0.0090  0.0053
-Quartile 3       0.0636  0.0327  0.0505  0.0383  0.0427  0.0411  0.0500  0.0436
+Arithmetic Mean  0.0176  0.0064  0.0102  0.0068  0.0107  0.0068  0.0110  0.0073
+Geometric Mean   0.0157  0.0016  0.0082  0.0058  0.0085  0.0057  0.0091  0.0055
+Quartile 3       0.0636  0.0327  0.0505  0.0383  0.0427  0.0411  0.0500  0.0508
 Maximum          0.1374  0.3076  0.1685  0.1259  0.1888  0.0973  0.1603  0.1519
 SE Mean          0.0067  0.0106  0.0068  0.0048  0.0072  0.0051  0.0066  0.0065
-LCL Mean (0.95)  0.0042 -0.0146 -0.0033 -0.0028 -0.0038 -0.0033 -0.0023 -0.0058
-UCL Mean (0.95)  0.0310  0.0274  0.0236  0.0163  0.0250  0.0170  0.0241  0.0201
-Variance         0.0039  0.0095  0.0039  0.0020  0.0045  0.0022  0.0037  0.0036
-Stdev            0.0622  0.0975  0.0624  0.0443  0.0667  0.0471  0.0612  0.0601
-Skewness        -0.2986  0.0953 -0.5722  0.0419  0.1615 -0.4635 -0.3758 -0.2299
-Kurtosis        -0.6380  2.8853  1.1700 -0.4601  0.3181 -0.0923  0.6144 -0.1050
+LCL Mean (0.95)  0.0042 -0.0146 -0.0033 -0.0028 -0.0037 -0.0033 -0.0022 -0.0057
+UCL Mean (0.95)  0.0311  0.0274  0.0237  0.0163  0.0251  0.0170  0.0242  0.0203
+Variance         0.0039  0.0095  0.0039  0.0020  0.0045  0.0022  0.0038  0.0036
+Stdev            0.0622  0.0974  0.0624  0.0443  0.0668  0.0471  0.0612  0.0602
+Skewness        -0.2997  0.0967 -0.5759  0.0376  0.1566 -0.4643 -0.3786 -0.2330
+Kurtosis        -0.6386  2.8880  1.1707 -0.4614  0.3107 -0.0950  0.6026 -0.1181
                    XLRE     XLC     XLP
 Observations    85.0000 85.0000 85.0000
 NAs              0.0000  0.0000  0.0000
 Minimum         -0.1574 -0.1413 -0.0974
 Quartile 1      -0.0306 -0.0216 -0.0148
 Median           0.0104  0.0178  0.0122
-Arithmetic Mean  0.0047  0.0109  0.0061
-Geometric Mean   0.0032  0.0093  0.0054
+Arithmetic Mean  0.0047  0.0108  0.0062
+Geometric Mean   0.0032  0.0092  0.0054
 Quartile 3       0.0418  0.0452  0.0257
 Maximum          0.1248  0.1477  0.0970
 SE Mean          0.0060  0.0062  0.0042
-LCL Mean (0.95) -0.0072 -0.0014 -0.0023
-UCL Mean (0.95)  0.0166  0.0231  0.0145
+LCL Mean (0.95) -0.0072 -0.0015 -0.0022
+UCL Mean (0.95)  0.0166  0.0230  0.0146
 Variance         0.0030  0.0032  0.0015
 Stdev            0.0552  0.0568  0.0389
-Skewness        -0.3590 -0.3064 -0.2386
-Kurtosis         0.1479  0.1961  0.1595</code></pre>
+Skewness        -0.3590 -0.3005 -0.2402
+Kurtosis         0.1479  0.1875  0.1601</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -307,18 +306,18 @@ Observations    126.0000 126.0000 126.0000 126.0000 126.0000
 NAs               0.0000   0.0000   0.0000   0.0000   0.0000
 Minimum          -0.1218  -0.1532  -0.3581  -0.0974  -0.0976
 Quartile 1       -0.0155  -0.0174  -0.0341  -0.0147  -0.0250
-Median            0.0184   0.0110   0.0095   0.0069   0.0108
-Arithmetic Mean   0.0166   0.0109   0.0048   0.0049   0.0062
-Geometric Mean    0.0150   0.0092   0.0012   0.0042   0.0054
+Median            0.0184   0.0110   0.0095   0.0069   0.0117
+Arithmetic Mean   0.0166   0.0110   0.0048   0.0049   0.0063
+Geometric Mean    0.0150   0.0093   0.0011   0.0042   0.0054
 Quartile 3        0.0561   0.0361   0.0325   0.0241   0.0328
 Maximum           0.1374   0.1888   0.3076   0.0970   0.1259
 SE Mean           0.0050   0.0052   0.0076   0.0033   0.0037
-LCL Mean (0.95)   0.0067   0.0006  -0.0103  -0.0016  -0.0011
-UCL Mean (0.95)   0.0264   0.0212   0.0200   0.0113   0.0136
+LCL Mean (0.95)   0.0068   0.0007  -0.0103  -0.0016  -0.0011
+UCL Mean (0.95)   0.0264   0.0212   0.0199   0.0113   0.0136
 Variance          0.0031   0.0034   0.0073   0.0013   0.0017
 Stdev             0.0557   0.0583   0.0857   0.0365   0.0416
-Skewness         -0.2230   0.1807   0.1372  -0.1866  -0.0636
-Kurtosis         -0.3741   0.9550   3.7257   0.2102  -0.2309</code></pre>
+Skewness         -0.2238   0.1770   0.1383  -0.1878  -0.0666
+Kurtosis         -0.3749   0.9476   3.7286   0.2104  -0.2317</code></pre>
 </div>
 </div>
 <ul>
@@ -355,11 +354,19 @@ Kurtosis         -0.3741   0.9550   3.7257   0.2102  -0.2309</code></pre>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">🧾 Conclusion</h2>
+<p>Conclusion</p>
 <p>This project demonstrates how financial data from Yahoo Finance can be used with R to evaluate investment performance across sectors. The combination of cumulative return charts and return statistics helps understand <strong>growth potential</strong> and <strong>risk exposure</strong> across the S&amp;P 500 sectors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save chart to file</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"figures/monthly_returns_chart.png"</span>, <span class="at">width =</span> <span class="dv">800</span>, <span class="at">height =</span> <span class="dv">600</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">charts.PerformanceSummary</span>(monthly_returns, <span class="at">main =</span> <span class="st">"S&amp;P 500 Sector Monthly Returns (2015–2025)"</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>png 
+  2 </code></pre>
+</div>
+</div>
+</section>
 </section>
 
 </main>
