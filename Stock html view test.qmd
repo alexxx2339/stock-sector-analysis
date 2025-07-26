@@ -1,0 +1,141 @@
+---
+---
+title: "📊 S&P 500 Sector Performance"
+author: "Alex Alvarez"
+format: html
+editor: visual
+---
+
+## 🧠 Overview
+
+This project analyzes the performance of **S&P 500 sectors** using sector **ETFs** (like XLK for tech, XLE for energy, etc.) from **2015 to July 2025**.  
+📥 Data is pulled from Yahoo Finance using R packages `quantmod` and `PerformanceAnalytics`.
+
+### 🔍 We’ll explore:
+- 📈 Monthly returns  
+- 📉 Cumulative performance  
+- 🔁 Rolling volatility  
+
+### 🧰 Tools Used:
+- 🧮 `quantmod`: To download stock data  
+- 📉 `PerformanceAnalytics`: For return metrics & charts  
+- 🧹 `tidyverse`: For data wrangling and visualization
+---
+
+```{r}
+library(quantmod)
+library(PerformanceAnalytics)
+library(tidyverse)
+
+```
+
+```{r}
+#create your clean prices object — a time-series dataset with all 11 sector ETF prices from 2015 to today (July 25, 2025).
+
+tickers <- c("XLK", "XLE", "XLF", "XLV", "XLY", "XLU", "XLI", "XLB", "XLRE", "XLC", "XLP")
+
+getSymbols(tickers, src = "yahoo", from = "2015-01-01", to = Sys.Date())
+
+prices <- map(tickers, ~ Ad(get(.x))) %>% reduce(merge)
+colnames(prices) <- tickers
+```
+
+```{r}
+# Get monthly closing prices
+monthly_prices_list <- map(tickers, ~ {
+  to.monthly(get(.x), indexAt = "lastof", drop.time = TRUE)[, 4]
+})
+monthly_prices <- reduce(monthly_prices_list, merge)
+colnames(monthly_prices) <- tickers
+
+# Calculate discrete monthly returns
+monthly_returns <- ROC(monthly_prices, type = "discrete") %>% na.omit()
+
+suppressWarnings(
+  charts.PerformanceSummary(
+    monthly_returns,
+    main = "📈 S&P 500 Sector Monthly Returns (2015–2025)"
+  )
+)
+ 
+```
+
+>  **Interpretation:**
+>
+> -    📈 **Cumulative Return:** Shows how each sector grew over time.
+>
+> -    📉 **Monthly Return:** Highlights monthly fluctuations (volatility)
+>
+> -   🔻 **Drawdown:** Shows the largest drops from peaks — useful to evaluate risk.
+
+```{r}
+# Clean Comparison with 5 Sectors (Optional for Simplicity)
+tickers <- c("XLK", "XLY", "XLE", "XLP", "XLV")
+
+getSymbols(tickers, src = "yahoo", from = "2015-01-01", to = Sys.Date())
+prices <- map(tickers, ~ Ad(get(.x))) %>% reduce(merge)
+colnames(prices) <- tickers
+```
+
+```{r}
+summary_stats <- table.Stats(monthly_returns)
+round(summary_stats, 5)
+
+```
+
+```{r}
+# Apply to.monthly and extract Close for each ticker individually
+monthly_prices_list <- map(tickers, ~ {
+  to.monthly(get(.x), indexAt = "lastof", drop.time = TRUE)[, 4]  # 4 = Close
+})
+
+# Combine into one xts object
+monthly_prices <- reduce(monthly_prices_list, merge)
+colnames(monthly_prices) <- tickers
+
+# Calculate monthly returns
+monthly_returns <- ROC(monthly_prices, type = "discrete") %>% na.omit()
+
+```
+
+```{r}
+colnames(table.Stats(monthly_returns))
+```
+
+```{r}
+summary_stats <- table.Stats(monthly_returns)
+round(summary_stats, 4)
+```
+
+-   📊 **Arithmetic Mean** = average monthly return
+
+<!-- -->
+
+-    ⚖️ **Stdev** = volatility (risk)
+
+<!-- -->
+
+-    🚨 **Minimum** = worst monthly performance
+
+-    🏆 **Maximum** = best monthly performance
+
+    🧠 Insights
+
+    -    💡 Technology (XLK) and Consumer Discretionary (XLY) had the **highest average returns**.
+
+    -    ⚡ Energy (XLE) showed **higher volatility** and **largest drawdowns**.
+
+    -    🛡️ Staples (XLP) and Health Care (XLV) provided **more stability** in downturns.
+
+```{r}
+suppressWarnings(
+  charts.PerformanceSummary(
+    monthly_returns,
+    main = "S&P 500 Sector Monthly Returns (2015–2025)"
+  )
+) 
+```
+
+## 🧾 Conclusion
+
+This project demonstrates how financial data from Yahoo Finance can be used with R to evaluate investment performance across sectors. The combination of cumulative return charts and return statistics helps understand **growth potential** and **risk exposure** across the S&P 500 sectors.
