@@ -33,3 +33,12 @@ The analysis is performed in **R** using:
 ## ✍️ Author
 **Alex Alvarez**  
 MSQE Candidate – San Francisco State University
+
+## 🔁 How to Reproduce
+
+To run this analysis on your own:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/alexxx2339/stock-sector-analysis.git
+
