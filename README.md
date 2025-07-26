@@ -26,8 +26,6 @@ The analysis is performed in **R** using: - `quantmod` -
 
 ![Cumulative Returns Chart](figures/cumulative_returns_chart.png)
 
-### 📉 Drawdown Chart
-
 ![Drawdown Chart](figures/drawdown_chart.png)
 
 ## 📂 Files
