@@ -15,6 +15,11 @@ The analysis is performed in **R** using:
 - `PerformanceAnalytics`
 - `tidyverse`
 
+
+### 📈 Monthly Returns Chart
+
+![Monthly Returns Chart](figures/monthly_returns_chart.png)
+
 ## 📂 Files
 - `Stock-Sector-Analysis.Rproj`: RStudio project file
 - `stock-sector-analysis.qmd`: Quarto source file
