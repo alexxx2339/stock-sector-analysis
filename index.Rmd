@@ -25,6 +25,7 @@ This project analyzes the performance of **S&P 500 sectors** using sector **ETFs
 -   🧮 `quantmod`: Download stock data\
 -   📉 `PerformanceAnalytics`: Metrics & visualizations\
 -   📊 `tidyverse`: Clean and manipulate data
+-   [➡️ View Python Dashboard](https://alexxx2339.github.io/stock-sector-analysis/stock_dashboard.html)
 
 ### 📈 Monthly Performance Chart
 
