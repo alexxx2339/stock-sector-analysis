@@ -73,6 +73,17 @@ last(index(prices))
 ```
 
 ```{r}
+# Get the most recent date from the stock data
+last_updated <- max(index(prices), na.rm = TRUE)
+
+# Display it as a message
+cat("📅 **Data last updated on:**", format(last_updated, "%B %d, %Y"))
+```
+
+```{rprices <- do.call(merge, lapply(tickers, function(x) Ad(get(x))))}
+```
+
+```{r}
 suppressWarnings(
   charts.PerformanceSummary(
     monthly_returns,
