@@ -1,0 +1,36 @@
+---
+title: "📈 Stock Sector Dashboard"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    self_contained: true
+    theme: united
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(PerformanceAnalytics)
+library(tidyverse)
+
+# Example data — replace this with your real data
+data(managers)
+returns <- managers[, 1:3]
+```
+
+## Column {data-width="650"}
+
+### Chart A
+
+```{r}
+charts.PerformanceSummary(returns)
+
+```
+
+## Column {data-width="350"}
+
+### Chart B
+
+```{r}
+chart.Drawdown(returns)
+```

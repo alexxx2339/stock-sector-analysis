@@ -3,8 +3,8 @@
 title: "📊 S&P 500 Sector Performance"
 author: "Alex Alvarez"
 format: html
+output-file: index.html
 editor: visual
----
 
 ## 🧠 Overview
 
@@ -153,3 +153,7 @@ png("figures/monthly_returns_chart.png", width = 800, height = 600)
 charts.PerformanceSummary(monthly_returns, main = "S&P 500 Sector Monthly Returns (2015–2025)")
 dev.off()
 ```
+
+## 📈 Brief Analysis
+
+The analysis of monthly returns across 11 S&P 500 sector ETFs from 2018 to 2025 reveals distinct performance patterns. **Technology (XLK)** consistently outperformed other sectors, showing strong average returns and relatively moderate volatility. In contrast, **Energy (XLE)** experienced higher volatility and deeper drawdowns, especially during periods of oil price instability and economic slowdown. **Utilities (XLU)** and **Consumer Staples (XLP)** offered more stable returns, making them potential safe-haven sectors during downturns. The COVID-19 dip in early 2020 is clearly reflected across all sectors, but the recovery trajectory varied — with tech rebounding the fastest. These insights suggest that diversification across sectors can help balance risk and return, depending on the macroeconomic environment.

@@ -1,0 +1,102 @@
+---
+title: "📊 S&P 500 Sector Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+editor: visual
+---
+
+## 🧠 Overview
+
+This project analyzes the performance of **S&P 500 sectors** using sector **ETFs** (like XLK for tech, XLE for energy, etc.) from **2015 to July 2025**.\
+📥 Data is pulled from Yahoo Finance using R packages `quantmod` and `PerformanceAnalytics`.
+
+### 🔍 We’ll explore:
+
+-   📈 Monthly returns\
+-   📉 Cumulative performance\
+-   🔁 Rolling volatility
+
+------------------------------------------------------------------------
+
+### 🧰 Tools Used
+
+-   🧮 `quantmod`: Download stock data\
+-   📉 `PerformanceAnalytics`: Metrics & visualizations\
+-   📊 `tidyverse`: Clean and manipulate data
+
+### 📈 Monthly Performance Chart
+
+```{r}
+### 📈 Monthly Performance Chart
+
+library(flexdashboard)
+library(quantmod)
+library(PerformanceAnalytics)
+library(tidyverse)
+library(DT)
+
+
+
+```
+
+# Sector tickers
+
+```{r}
+tickers <- c("XLK", "XLE", "XLF", "XLV", "XLY", "XLU", "XLI", "XLB", "XLRE", "XLC", "XLP")
+getSymbols(tickers, src = "yahoo", from = "2015-01-01", auto.assign = TRUE)
+prices <- do.call(merge, lapply(tickers, function(x) Ad(get(x))))
+returns <- na.omit(Return.calculate(prices))
+monthly_returns <- apply.monthly(returns, colMeans)
+
+```
+
+# Load prices from Yahoo
+
+```{r}
+tickers <- c("XLK", "XLE", "XLF", "XLV", "XLY", "XLU", "XLI", "XLB", "XLRE", "XLC", "XLP")
+getSymbols(tickers, src = "yahoo", from = "2015-01-01", auto.assign = TRUE)
+
+
+```
+
+# Adjusted close prices
+
+```{r}
+prices <- do.call(merge, lapply(tickers, function(x) Ad(get(x))))
+returns <- na.omit(Return.calculate(prices))
+monthly_returns <- apply.monthly(returns, colMeans)
+head(prices)
+```
+
+```{r}
+suppressWarnings(
+  charts.PerformanceSummary(
+    monthly_returns,
+    main = "📈 Monthly Returns (2015–2025)"
+  )
+)
+```
+
+**Extract Adjusted Close Prices:**
+
+```{r}
+prices <- do.call(merge, lapply(tickers, function(x) Ad(get(x))))
+
+head (prices)
+
+```
+
+Calculate Returns & Charts:
+
+```{r}
+returns <- na.omit(Return.calculate(prices))
+charts.PerformanceSummary(returns)
+```
+
+### 📋 Price Table Preview
+
+```{r}
+datatable(head(prices), options = list(pageLength = 10))
+```
